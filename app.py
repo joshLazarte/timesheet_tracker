@@ -1,15 +1,24 @@
-import datetime, xlsxwriter
-from utils.dates import days, today	
-from utils.excel import writeDates, writeHeader, writeTimes
-
-workbook = xlsxwriter.Workbook('Timesheet ' + today + '.xlsx')
-worksheet = workbook.add_worksheet()
-
-worksheet.set_column(0, 0, 14)
+from utils.dates import days
+from utils.excel.vars import *
+from utils.excel.init_timesheet import timesheet, workbook
+import utils.excel.format
+from utils.excel.excel import *
 
 
-writeHeader(worksheet)
-writeDates(worksheet, days)
-writeTimes(worksheet, days)
-	
+
+# write PTO headers
+writeDataRow(timesheet, CONTENT_ROW_START, PTO_COL_START, PTO_HEADERS, BOLD)
+
+# write timesheet headers
+writeDataRow(timesheet, CONTENT_ROW_START, TIMESHEET_COL_START, TIMESHEET_HEADERS, BOLD)
+
+# write dates
+writeDataCol(timesheet, CONTENT_ROW_START + 1, TIMESHEET_COL_START, days, None)
+
+# write default times
+writeMultiRows(timesheet, CONTENT_ROW_START + 1, CONTENT_ROW_END + 1, TIMESHEET_COL_START + 1, DEFAULT_TIMES, 1, None)
+
+# write OT info
+writeMultiCols(timesheet, OT_ROW_START, PTO_COL_START, 4, OT_DETAILS, 2, BOLD)
+
 workbook.close()
