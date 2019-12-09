@@ -1,7 +1,7 @@
 from .init_timesheet import timesheet, workbook
 
 PTO_COL_START = 0
-TIMESHEET_COL_START = 4
+TIMESHEET_COL_START = 6
 HEADER_ROW = 0
 CONTENT_ROW_START = 1
 CONTENT_ROW_END = CONTENT_ROW_START + 14
@@ -16,4 +16,6 @@ OT_DETAILS = ['REASON: ', 'JOB NUMBER: ', 'DATE: ', 'HOURS WORKED: ', 'TOTAL HOU
 
 # format vars
 BOLD =  workbook.add_format({'bold': True})
+CENTER = workbook.add_format({'align': 'center'})
+HEADER_FORMAT = workbook.add_format({'bold': True, 'align': 'center'})
 

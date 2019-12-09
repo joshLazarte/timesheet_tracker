@@ -2,21 +2,25 @@ from .vars import *
 from .init_timesheet import timesheet, workbook
 import copy
 
-# set comments col width
-comments_col = PTO_COL_START + (len(PTO_HEADERS) - 1)
-timesheet.set_column(comments_col, comments_col, 20)
 
-# outline PTO Section
-def outlinePTOSection():
-	col = copy.copy(PTO_COL_START)
-	row = copy.copy(CONTENT_ROW_START)
+
+# merge comments cells
+def mergeCommentCells():
+	startCol = PTO_COL_START + 3
+	endCol = startCol + 2
+	row = copy.copy(CONTENT_ROW_START) 
 	
-	cell_format = workbook.add_format()
-	cell_format.set_top()
-	
-	for i in range(5):
-		timesheet.write(row, col, '', cell_format)
-		col += 1
+	for i in range(CONTENT_ROW_END):
+		timesheet.merge_range(row, startCol, row, endCol, '')
+		row += 1
 		
-outlinePTOSection()
+
+
+
+	
+	
+	
+	
+
+mergeCommentCells()
 

@@ -7,10 +7,10 @@ from utils.excel.excel import *
 
 
 # write PTO headers
-writeDataRow(timesheet, CONTENT_ROW_START, PTO_COL_START, PTO_HEADERS, BOLD)
+writeDataRow(timesheet, CONTENT_ROW_START, PTO_COL_START, PTO_HEADERS, HEADER_FORMAT)
 
 # write timesheet headers
-writeDataRow(timesheet, CONTENT_ROW_START, TIMESHEET_COL_START, TIMESHEET_HEADERS, BOLD)
+writeDataRow(timesheet, CONTENT_ROW_START, TIMESHEET_COL_START, TIMESHEET_HEADERS, HEADER_FORMAT)
 
 # write dates
 writeDataCol(timesheet, CONTENT_ROW_START + 1, TIMESHEET_COL_START, days, None)
