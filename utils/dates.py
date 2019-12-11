@@ -24,6 +24,6 @@ def buildDayStrings(startDate, numDays):
 	return dayStrings
 	
 	
-days = buildDayStrings(datetime.datetime(2019, 11, 22), numDays=14)
+days = buildDayStrings(datetime.datetime(2019, 12, 6), numDays=14)
 
 today = datetime.datetime.now().strftime('%m-%d')
